@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 class GamesController < ApplicationController
   def index
     @result = GameService.new.index.result
@@ -9,7 +8,7 @@ class GamesController < ApplicationController
 
   def show
     # show game with frame sets and their player ids
-    @result = GameService.new(params[:id]).show.result
+    @result = GameService.new.show(params[:id]).result
     render_json_with_status
   end
 

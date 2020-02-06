@@ -13,6 +13,14 @@ class GameService < BaseService
     self
   end
 
+  def show id
+    @result = { status: 200, data: Games.find(id: id) }
+    self
+  rescue ActiveRecord::RecordNotFound => e
+    @result = { status: 400, data: [], errors: ["Game not found: #{e.id}"] }
+    self
+  end
+
   def create_game(_params)
     if @player_ids.empty?
       @result = { status: 400, data: [], errors: ['At least one player id should be provided'] }
