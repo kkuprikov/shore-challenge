@@ -1,24 +1,5 @@
-# README
+# Bowling game API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![](https://user-images.githubusercontent.com/713419/73968146-3f704d80-492a-11ea-976f-9f36ccba8e51.png)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Comes with traditional scoring system!
