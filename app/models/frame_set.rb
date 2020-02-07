@@ -59,7 +59,7 @@ class FrameSet < ApplicationRecord
       if (last_frame.size == 3) && (strike?(last_frame[0..0]) || spare?(last_frame[0..1]))
         true
       else strike?(last_frame)
-       false
+           false
       end
     elsif strike?(last_frame) || last_frame.size == 2
       true

@@ -2,5 +2,6 @@
 
 class Player < ApplicationRecord
   has_many :frame_sets
-  has_many :games, through: :games_players
+  has_many :game_players
+  has_many :games, through: :game_players
 end

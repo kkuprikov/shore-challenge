@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :players, only: %i[index create]
-  resources :games, only: %i[index create] do
+  resources :games, only: %i[index create show] do
     member do
       post :add_score
     end

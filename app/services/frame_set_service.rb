@@ -6,7 +6,7 @@ class FrameSetService < BaseService
   PINS_COUNT = 10
 
   def initialize(game_id:, player_id:)
-    @frame_set = FrameSet.find_by(game_id: game_id, player_id: player_id)
+    @frame_set = FrameSet.includes(:player).find_by(game_id: game_id, player_id: player_id)
   end
 
   def add_score(score)
@@ -35,14 +35,24 @@ class FrameSetService < BaseService
 
     @frame_set.update(frames: new_frames)
 
-    @result = { status: 200, data: { frames: new_frames }, errors: [] }
+    @result = { status: 200, data: { id: @frame_set.game_id,
+                                     player_id: @frame_set.player_id,
+                                     frames: new_frames }, errors: [] }
     self
   end
 
   def get_frames_with_scores
-    @result = @frame_set.frames.each_with_index.map do |frame, i|
+    frames = @frame_set.frames.each_with_index.map do |frame, i|
       { frame: frame, score: @frame_set.score(i) }
     end
+
+    @result = { frames: frames, player: { id: @frame_set.player.id, name: @frame_set.player.name } }
+
+    self
+  end
+
+  def get_total_score
+    @result = @frame_set.total_score
 
     self
   end
